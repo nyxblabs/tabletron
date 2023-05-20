@@ -13,12 +13,12 @@
     "url": "https://github.com/nyxblabs/tabletron/issues"
   },
   "funding": "https://github.com/nyxblabs/tabletron?sponsor=1",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
+      "require": "./dist/index.cjs",
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
     }
