@@ -6,11 +6,11 @@ import { beforeAll, describe, expect, test } from 'vitest'
  * higher Node.js requirement. Test compiled version
  * to verify it works with Node.js 12.
  */
-import terminalColumns, { breakpoints } from '../src'
+import tabletron, { breakpoints } from '../src'
 
 const { blue, bold, underline } = color
 
-// import terminalColumns, { breakpoints } from '../src';
+// import tabletron, { breakpoints } from '../src';
 
 const loremIpsumShort = 'Lorem ipsum dolor sit amet.'
 const loremIpsumLong = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
@@ -29,7 +29,7 @@ describe('edge cases', () => {
    describe('error handling', () => {
       test('missing columns', () => {
          expect(
-            () => terminalColumns(
+            () => tabletron(
                [['']],
                [100, 200],
             ),
@@ -38,7 +38,7 @@ describe('edge cases', () => {
 
       test('invalid column', () => {
          expect(
-            () => terminalColumns(
+            () => tabletron(
                [['']],
                ['100'],
             ),
@@ -49,23 +49,23 @@ describe('edge cases', () => {
    describe('empty table', () => {
       test('no table', () => {
          // @ts-expect-error test error
-         const table = terminalColumns()
+         const table = tabletron()
          expect(table).toBe('')
       })
 
       test('no rows', () => {
-         const table = terminalColumns([])
+         const table = tabletron([])
          expect(table).toBe('')
       })
 
       test('no columns', () => {
-         const table = terminalColumns([[], []])
+         const table = tabletron([[], []])
          expect(table).toBe('')
       })
    })
 
    test('inconsistent rows', () => {
-      const table = terminalColumns([
+      const table = tabletron([
          ['A'],
          ['B', 'B'],
          ['C', 'C', 'C'],
@@ -75,7 +75,7 @@ describe('edge cases', () => {
    })
 
    test('colored text', () => {
-      const table = terminalColumns([
+      const table = tabletron([
          [blue('A'.repeat(2))],
          ['B', bold('B'.repeat(3))],
          ['C', 'C', underline('C'.repeat(4))],
@@ -85,7 +85,7 @@ describe('edge cases', () => {
    })
 
    test('infinite width', () => {
-      const table = terminalColumns([
+      const table = tabletron([
          ['A'.repeat(100)],
          ['B', 'B'.repeat(100)],
          ['C', 'C', 'C'.repeat(100)],
@@ -99,7 +99,7 @@ describe('edge cases', () => {
 
 describe('padding', () => {
    test('overflowing padding reduction - even', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [
                loremIpsumShort,
@@ -118,7 +118,7 @@ describe('padding', () => {
    })
 
    test('overflowing padding reduction - uneven', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [
                loremIpsumShort,
@@ -137,7 +137,7 @@ describe('padding', () => {
    })
 
    test('overflowing content with overflowing padding reduction - even', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [
                loremIpsumLong,
@@ -158,7 +158,7 @@ describe('padding', () => {
 
 describe('align', () => {
    test('align right', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [
                loremIpsumNewLines,
@@ -177,7 +177,7 @@ describe('align', () => {
 
 describe('process', () => {
    test('preprocess', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [
                loremIpsumNewLines,
@@ -194,7 +194,7 @@ describe('process', () => {
    })
 
    test('postprocess', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [
                loremIpsumNewLines,
@@ -216,7 +216,7 @@ describe('process', () => {
    })
 
    test('postprocess ignores vertical padding', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [
                loremIpsumNewLines,
@@ -238,7 +238,7 @@ describe('process', () => {
 
 describe('static widths', () => {
    test('fixed width', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [loremIpsumShort, loremIpsumLong],
          ],
@@ -249,7 +249,7 @@ describe('static widths', () => {
    })
 
    test('overflowing width', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [loremIpsumShort, loremIpsumLong],
          ],
@@ -260,7 +260,7 @@ describe('static widths', () => {
    })
 
    test('overflowing rows', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [loremIpsumShort, loremIpsumShort],
             [loremIpsumShort, loremIpsumShort],
@@ -272,7 +272,7 @@ describe('static widths', () => {
    })
 
    test('overflowing width with padding', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [loremIpsumShort, loremIpsumLong],
          ],
@@ -295,7 +295,7 @@ describe('static widths', () => {
 
 describe('percent widths', () => {
    test('50% 50%', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [loremIpsumLong, loremIpsumLong],
          ],
@@ -309,7 +309,7 @@ describe('percent widths', () => {
    })
 
    test('50% 50% with padding', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [loremIpsumLong, loremIpsumLong],
          ],
@@ -331,7 +331,7 @@ describe('percent widths', () => {
    })
 
    test('70% 30% with different content lengths', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [loremIpsumLong, loremIpsumLong],
             [loremIpsumLong, loremIpsumShort],
@@ -343,7 +343,7 @@ describe('percent widths', () => {
    })
 
    test('100% 100% with padding', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [loremIpsumLong, loremIpsumLong],
          ],
@@ -369,7 +369,7 @@ describe('percent widths', () => {
 
 describe('content-width', () => {
    test('content-width with fixed width', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [loremIpsumLong, loremIpsumLong],
             [loremIpsumLong, loremIpsumShort],
@@ -381,7 +381,7 @@ describe('content-width', () => {
    })
 
    test('content-width with padding', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [loremIpsumLong, loremIpsumLong],
          ],
@@ -403,7 +403,7 @@ describe('content-width', () => {
    })
 
    test('content-width with overflowing', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [loremIpsumNewLines, loremIpsumNewLines, loremIpsumNewLines],
          ],
@@ -432,7 +432,7 @@ describe('content-width', () => {
 
 describe('auto', () => {
    test('event split', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [
                loremIpsumShort,
@@ -451,7 +451,7 @@ describe('auto', () => {
    })
 
    test('event split - many', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [
                loremIpsumShort,
@@ -488,7 +488,7 @@ describe('auto', () => {
    })
 
    test('mutli-row', () => {
-      const table = terminalColumns(
+      const table = tabletron(
          [
             [loremIpsumShort, loremIpsumNewLines, loremIpsumNewLines],
             [loremIpsumLong, loremIpsumLong, loremIpsumShort],
@@ -500,7 +500,7 @@ describe('auto', () => {
 })
 
 describe('breakpoints', () => {
-   const getTable = () => terminalColumns(
+   const getTable = () => tabletron(
       [
          [loremIpsumLong, loremIpsumLong],
          [loremIpsumLong, loremIpsumLong],
@@ -540,7 +540,7 @@ describe('breakpoints', () => {
 })
 
 describe('custom breakpoints function', () => {
-   const getTable = () => terminalColumns(
+   const getTable = () => tabletron(
       [
          [loremIpsumLong, loremIpsumLong],
          [loremIpsumLong, loremIpsumLong],

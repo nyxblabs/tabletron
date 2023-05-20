@@ -8,7 +8,7 @@
 import { promisify } from 'node:util'
 import ansiEscapes from 'ansi-escapes'
 import color from '@nyxb/picocolors'
-import terminalColumns from '../src'
+import tabletron from '../src'
 
 const { red, blue, green } = color
 
@@ -21,7 +21,7 @@ const tableData = [
 ]
 
 function renderTable() {
-   const table = terminalColumns(tableData)
+   const table = tabletron(tableData)
    process.stdout.write(ansiEscapes.clearTerminal + table)
 }
 

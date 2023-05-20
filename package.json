@@ -24,12 +24,13 @@
     }
   },
   "scripts": {
+    "prepack": "nyxr build",
     "build": "buildkarium",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint --ext .ts,.js .",
     "lint:fix": "eslint --ext .ts,.js . --fix",
-    "typecheck": "tsc --noEmit",
-    "pretest": "nyxr build",
-    "test": "vitest run --coverage"
+    "test": "vitest run --coverage",
+    "release": "nyxr test && nyxlx changelogen@latest --release && pnpmm publish && git push --follow-tags origin main"
   },
   "devDependencies": {
     "@nyxb/eslint-config": "0.0.53",
