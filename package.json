@@ -30,7 +30,7 @@
     "lint": "eslint --ext .ts,.js .",
     "lint:fix": "eslint --ext .ts,.js . --fix",
     "test": "vitest run --coverage",
-    "release": "nyxr test && nyxlx changelogen@latest --release && pnpmm publish && git push --follow-tags origin main"
+    "release": "nyxr test && nyxlx changelogen@latest --release && pnpm publish && git push --follow-tags origin main"
   },
   "devDependencies": {
     "@nyxb/eslint-config": "0.0.53",
