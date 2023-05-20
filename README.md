@@ -22,7 +22,7 @@
 - 🌊 Rows can overflow into multiple rows
 - 📱 Easy to make responsive tables
 
-➡️ [Try it out online](https://stackblitz.com/edit/tabletron-demo?devtoolsheight=50&file=examples/tabletron.js&view=editor)
+➡️ [Try it out online](https://stackblitz.com/edit/tabletron-demo-1337?devtoolsheight=50&file=examples/tabletron.js&view=editor)
 
 > Support this project by ⭐️ starring and sharing it. [Follow me](https://github.com/nyxb) to see what other cool projects I'm working on! 💙
 
