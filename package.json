@@ -1,0 +1,59 @@
+{
+  "name": "tabletron",
+  "version": "0.0.1",
+  "description": "🎨✨ Transform your terminal output into a clear, easily readable table with just one command! 📊🔍",
+  "author": "",
+  "license": "MIT",
+  "hompage": "https://💻nyxb.ws",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyxblabs/tabletron.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nyxblabs/tabletron/issues"
+  },
+  "funding": "https://github.com/nyxblabs/tabletron?sponsor=1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "buildkarium",
+    "lint": "eslint --ext .ts,.js .",
+    "lint:fix": "eslint --ext .ts,.js . --fix",
+    "typecheck": "tsc --noEmit",
+    "pretest": "nyxr build",
+    "test": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@nyxb/eslint-config": "0.0.53",
+    "@nyxb/picocolors": "1.0.2",
+    "@types/wrap-ansi": "^8.0.1",
+    "@vitest/coverage-c8": "^0.31.1",
+    "ansi-escapes": "^6.2.0",
+    "buildkarium": "^0.0.2",
+    "eslint": "^8.41.0",
+    "string-width": "^6.1.0",
+    "typescript": "^5.0.2",
+    "vitest": "^0.31.1",
+    "wrap-ansi": "^8.1.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "cli",
+    "table",
+    "columns",
+    "readable",
+    "wrapping",
+    "responsive",
+    "typescript"
+  ]
+}
