@@ -1,9 +1,9 @@
-import { terminalColumns } from './terminal-columns'
+import { tabletron } from './tabletron'
 import { breakpoints } from './breakpoints'
 import type { Options } from './types'
 
 export {
-   terminalColumns as default,
+   tabletron as default,
    breakpoints,
    Options,
 }

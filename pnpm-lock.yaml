@@ -7,6 +7,9 @@ devDependencies:
   '@nyxb/picocolors':
     specifier: 1.0.2
     version: 1.0.2
+  '@types/node':
+    specifier: ^20.2.1
+    version: 20.2.1
   '@types/wrap-ansi':
     specifier: ^8.0.1
     version: 8.0.1

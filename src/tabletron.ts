@@ -8,7 +8,7 @@ import { getColumnContentWidths } from './utils/get-column-content-widths'
 import { computeColumnWidths } from './utils/compute-column-widths'
 import { renderRow } from './utils/render-row'
 
-export function terminalColumns(
+export function tabletron(
    tableData: Row[],
    options?: Options | OptionsFunction,
 ) {
